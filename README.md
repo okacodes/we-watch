@@ -74,7 +74,7 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <!-- <li><a href="#acknowledgments">Acknowledgments</a></li> -->
   </ol>
 </details>
 
@@ -84,8 +84,8 @@
 ## About The Project
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- 
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
 
@@ -155,11 +155,12 @@ and whatever users are in your "party" will see what you see. I aim to add funct
 
 - [ ] Add documentation for setting up Postgres
 - [ ] Implement auth
+- [ ] Integrate streaming
 - [ ] Study the definition of insanity
 - [ ] Announce project on socials
     <!-- - [ ] Nested Feature -->
 
-See the [open issues](https://github.com/okacodes/we-watch/issues) for a full list of proposed features (and known issues).
+<!-- See the [open issues](https://github.com/okacodes/we-watch/issues) for a full list of proposed features (and known issues). -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -181,11 +182,11 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Top contributors:
+<!-- ### Top contributors:
 
 <a href="https://github.com/okacodes/we-watch/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=okacodes/we-watch" alt="contrib.rocks image" />
-</a>
+</a> -->
 
 
 
@@ -201,7 +202,7 @@ Distributed under the MIT License.
 <!-- CONTACT -->
 ## Contact
 
-Logan Lyons - [@@okacodes](https://twitter.com/okacodes) - admin@loganlyons.me.com
+Logan Lyons - [@okacodes](https://twitter.com/okacodes) - admin@loganlyons.me
 
 Project Link: [https://github.com/okacodes/we-watch](https://github.com/okacodes/we-watch)
 
@@ -210,13 +211,13 @@ Project Link: [https://github.com/okacodes/we-watch](https://github.com/okacodes
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+<!-- ## Acknowledgments
 
 * []()
 * []()
-* []()
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+* []() -->
+<!-- 
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
 
