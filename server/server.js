@@ -13,10 +13,11 @@ const pool = new Pool({
     password: process.env.DBPASSWORD
 })
 
-// Get Request
+
 app.use(cors);
 app.use(express.json());
 
+// Get Request
 app.get('/', (req, res) => {
     res.send('Get Request');
 })
