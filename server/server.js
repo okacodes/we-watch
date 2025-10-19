@@ -1,27 +1,19 @@
 const express = require('express');
-const cors = require('cors');
-const db = require('./app/models/index.js')
-const authRoutes = require('./app/route/auth.routes.js')
-const userRoutes = require('./app/route/user.routes.js')
+// const cors = require('cors');
+const db = require('./models/postgresdb.js')
+// const authRoutes = require('./app/route/auth.routes.js')
+// const userRoutes = require('./app/route/user.routes.js')
 // const mongoose = require('mongoose');
 // const PORT = 3000
 // require('dotenv').config();
 
 const app = express();
 
-const corsOptions = {
-    origin: "http://localhost:8081",
-}
+// const corsOptions = {
+//     origin: "http://localhost:8081",
+// }
 
 app.use(express.json());
-
-const pool = new Pool({
-    user: process.env.USER,
-    host: process.env.HOST,
-    database: process.env.DATABASE,
-    password: process.env.DBPASSWORD
-})
-
 
 app.use(cors);
 
