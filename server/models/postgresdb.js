@@ -1,4 +1,4 @@
-require('dotenv').config({path: '../.env'})
+require('dotenv').config({path: './.env'})
 const pg = require('pg')
 const { Pool } = pg;
 
@@ -12,12 +12,11 @@ const pool = new Pool({
 
 async function what(){
     console.log('0')
-    console.log(process.env.PASSWORD)
-    const result = await pool.query('SELECT * from users')
+    const result = await pool.query('SELECT * from USERS')
     console.log('1')
     console.log(result)
     console.log('2')
 }
-// what()
+what()
 
 module.exports = 'postgresdb'
