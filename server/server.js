@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan');
 // const cors = require('cors');
 const db = require('./models/postgresdb')
 // const db = import('./models/postgresdb')
@@ -16,8 +17,9 @@ const app = express();
 
 // app.use(cors(corsOptions));
 
-app.use(express.json());
+app.user(morgan(NODE_ENV === 'production' ? 'combined' : 'dev'))
 
+app.use(express.json({ strict: true }));
 app.use(express.urlencoded({ extended: true }));
 
 
