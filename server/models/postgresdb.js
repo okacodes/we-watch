@@ -10,13 +10,13 @@ const pool = new Pool({
     database: process.env.DATABASE
 })
 
-async function what(){
+const connectDB = async () => {
     console.log('0')
     const result = await pool.query('SELECT * from USERS')
     console.log('1')
     console.log(result)
     console.log('2')
 }
-what()
 
 module.exports = 'postgresdb'
+module.exports = connectDB

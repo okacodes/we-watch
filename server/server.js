@@ -1,27 +1,17 @@
 const express = require('express');
-const morgan = require('morgan');
+//const morgan = require('morgan');
 // const cors = require('cors');
 const db = require('./models/postgresdb')
-// const db = import('./models/postgresdb')
-// const authRoutes = require('./app/route/auth.routes.js')
-// const userRoutes = require('./app/route/user.routes.js')
-// const mongoose = require('mongoose');
 const PORT = 3000
 // require('dotenv').config();
-
 const app = express();
 
-// const corsOptions = {
-//     origin: "http://localhost:8081",
-// }
-
-// app.use(cors(corsOptions));
-
-app.user(morgan(NODE_ENV === 'production' ? 'combined' : 'dev'))
+//app.user(morgan(NODE_ENV === 'production' ? 'combined' : 'dev'))
 
 app.use(express.json({ strict: true }));
 app.use(express.urlencoded({ extended: true }));
 
+connectDB()
 
 // const pool = new Pool({
 //     user: process.env.USER,
