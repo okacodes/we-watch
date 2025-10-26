@@ -13,12 +13,16 @@ const pool = new Pool({
 
 
 // This is the logic I'll use to check if a username is available
-const what = async () => {
-	const result = await pool.query(`SELECT 1 FROM users WHERE users.username='notExist'`)
-	const exists = result.rowCount > 0
-	console.log(exists)
-}
-what()
+//const what = async () => {
+//	const result = await pool.query(`SELECT 1 FROM users WHERE users.username='testuser'`)
+//	const exists = result.rowCount > 0
+//	if(exists){
+//		console.log('exists')
+//	} else {
+//		console.log('nah')
+//	}
+//}
+//what()
 
 module.exports = {
 	query: (text, params) => pool.query(text, params),

@@ -1,7 +1,6 @@
 const express = require('express');
 //const morgan = require('morgan');
 // const cors = require('cors');
-const db = require('./models/postgresdb')
 const userRoutes = require('./routes/user.js')
 const PORT = 3000
 const app = express();
