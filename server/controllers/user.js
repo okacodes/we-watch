@@ -9,13 +9,20 @@ module.exports = {
 
 	postSignup: async(req, res) => {
 		// Declares the username to check
-		const userTest = req.body.userTest
+		const userName = req.body.userName
+		const userPass = req.body.userPass
 		// Queries database for given username
-		const result = await db.query(`SELECT * FROM users WHERE username = '${userTest}'`)
+		const result = await db.query(`SELECT * FROM users WHERE username = '${userName}'`)
 		
 		// Checks if a row exists with that given username(rowCount would be greater than 0),
 		// then stores it as a boolean in the exists variable
 		const exists = result.rowCount > 0
-		console.log(exists)
+
+		if(!exists) {
+			const userSubmit = await db.query(`INSERT INTO users(username, password) VALUES('${userName}', '${userPass}') RETURNING *`)
+			console.log(userSubmit)
+		} else {
+			console.log(`Hey, you can't use that username.`)
+		}
 	}
 }
