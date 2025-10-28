@@ -21,8 +21,13 @@ module.exports = {
 		if(!exists) {
 			const userSubmit = await db.query(`INSERT INTO users(username, password) VALUES('${userName}', '${userPass}') RETURNING *`)
 			console.log(userSubmit)
+			res.redirect()
 		} else {
 			console.log(`Hey, you can't use that username.`)
 		}
+	},
+
+	testR: async(req, res) => {
+		res.json({ message: "Hello React" })
 	}
 }
