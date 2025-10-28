@@ -2,7 +2,6 @@ const express = require('express');
 //const morgan = require('morgan');
 // const cors = require('cors');
 const userRoutes = require('./routes/user.js')
-const PORT = 3000
 const app = express();
 
 console.log('MUST BE STARTED FROM /server')
@@ -24,8 +23,8 @@ app.get('/', (req, res) => {
 app.use('/users', userRoutes)
 
 // Server Listening
-app.listen(process.env.PORT || PORT, () => {
-    console.log(`Server listening on ${PORT}`);
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`Server listening! Do things.`);
 })
 
 console.log('MUST BE STARTED FROM /server')

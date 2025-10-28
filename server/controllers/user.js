@@ -9,8 +9,7 @@ module.exports = {
 
 	postSignup: async(req, res) => {
 		// Declares the username to check
-		const userName = req.body.userName
-		const userPass = req.body.userPass
+		const { userName, userPass } = req.body
 		// Queries database for given username
 		const result = await db.query(`SELECT * FROM users WHERE username = '${userName}'`)
 		
