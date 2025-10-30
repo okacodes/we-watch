@@ -27,6 +27,7 @@ module.exports = {
 	},
 
 	testR: async(req, res) => {
-		res.json({ message: "Hello React" })
+		const foo = { message: "Hello React" }
+		res.json(foo)
 	}
 }
