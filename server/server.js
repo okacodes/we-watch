@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 })
 
 // Handles user authentication
-app.use('/users', userRoutes)
+app.use('/api', userRoutes)
 
 // Server Listening
 app.listen(process.env.PORT || 3000, () => {

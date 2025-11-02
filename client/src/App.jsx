@@ -10,12 +10,12 @@ const App = () => {
 		<Router>
 			<div>
 				<u>
-					<li><Link to="/test">Link Test</Link></li>
+					<li><Link to="/users/testR">Link Test</Link></li>
 				</u>
 			</div>	
 				
 			<Routes>
-				<Route path='/test' element={<Test />} />
+				<Route path='/users/testR' element={<Test />} />
 			</Routes>
 		</Router>
 	);
