@@ -5,6 +5,27 @@
 	text-align: center;
 }
 
-.testClass {
-	color: blue;
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 2rem 0;
+	position: absolute;
+	border: 1px solid blue;
+
+}
+
+.headerList {
+	display: flex;
+	gap: 1rem;
+}
+
+/* Register Styles */
+.registerContainer {
+	width: 30rem;
+	border: 1px solid grey;
+	border-radius: 1rem;
 }
