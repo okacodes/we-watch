@@ -22,10 +22,18 @@ module.exports = {
 		const exists = result.rowCount > 0
 
 		if(!exists) {
-			const userSubmit = await db.query(`INSERT INTO users(username, password) VALUES('${username}', '${password}') RETURNING *`)
-			console.log(userSubmit)
+			const registerQuery = {
+				text: `INSERT INTO users(username, password) VALUES($1, $2)`,
+				values: [`${username}`, `${password}`]
+			}
+			
+			await db.query(registerQuery)
+			console.log('Success!')
+			//const userSubmit = await db.query(`INSERT INTO users(username, password) VALUES('${username}', '${password}') RETURNING *`)
+			//console.log(userSubmit)
 			res.status(200).send({ message: 'Registration successful?' });
 		} else {
+			console.log('Fail...')
 			res.status(418).send({ message: 'That username is taken.' });
 		}
 	},
