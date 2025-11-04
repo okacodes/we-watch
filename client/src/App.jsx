@@ -14,11 +14,11 @@ const App = () => {
 		<Router>
 			<div>
 				<header className="header">
-						<ul className="headerList">
-							<li><Link to="/">Home</Link></li>
-							<li><Link to="/register">Register</Link></li>
-							<li><Link to="/login">Login</Link></li>
-						</ul>
+					<ul className="headerList">
+						<li><Link to="/">Home</Link></li>
+						<li><Link to="/register">Register</Link></li>
+						<li><Link to="/login">Login</Link></li>
+					</ul>
 				</header>
 			</div>	
 				

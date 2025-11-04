@@ -9,25 +9,24 @@ module.exports = {
 
 	postSignup: async(req, res) => {
 		// Declares the username to check
-		const { userName, userPass } = req.body
+		const { username, password } = req.body
+		const checkQuery = {
+			text: `SELECT * FROM users WHERE username = $1`,
+			values: [`${username}`]
+		}
 		// Queries database for given username
-		const result = await db.query(`SELECT * FROM users WHERE username = '${userName}'`)
+		const result = await db.query(checkQuery)
 		
 		// Checks if a row exists with that given username(rowCount would be greater than 0),
 		// then stores it as a boolean in the exists variable
 		const exists = result.rowCount > 0
 
 		if(!exists) {
-			const userSubmit = await db.query(`INSERT INTO users(username, password) VALUES('${userName}', '${userPass}') RETURNING *`)
+			const userSubmit = await db.query(`INSERT INTO users(username, password) VALUES('${username}', '${password}') RETURNING *`)
 			console.log(userSubmit)
-			res.redirect()
+			res.status(200).send({ message: 'Registration successful?' });
 		} else {
-			console.log(`Hey, you can't use that username.`)
+			res.status(418).send({ message: 'That username is taken.' });
 		}
 	},
-
-	testR: async(req, res) => {
-		const foo = { message: "Hello React" }
-		res.json(foo)
-	}
 }

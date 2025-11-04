@@ -29,3 +29,28 @@
 	border: 1px solid grey;
 	border-radius: 1rem;
 }
+
+.registerForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+}
+
+.registerFormField {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 50%;
+	gap: 0.4rem;
+}
+
+.registerFormInput {
+	width: 97%;
+}
+
+.Button1 {
+	margin: 0 0 1rem;
+	background-color: lightgrey;
+}
