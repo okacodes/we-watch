@@ -1,4 +1,5 @@
 const db = require('../models/postgresdb')
+const bcrypt = require('bcrypt')
 
 module.exports = {
 	getSignup: async(req, res) => {
@@ -22,9 +23,11 @@ module.exports = {
 		const exists = result.rowCount > 0
 
 		if(!exists) {
+			const hashedPassword = await bcrypt.hash(password, 10)
+			console.log(hashedPassword)
 			const registerQuery = {
 				text: `INSERT INTO users(username, password) VALUES($1, $2)`,
-				values: [`${username}`, `${password}`]
+				values: [`${username}`, `${hashedPassword}`]
 			}
 			
 			await db.query(registerQuery)
