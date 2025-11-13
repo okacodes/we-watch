@@ -39,13 +39,13 @@ const Register = () => {
 	}
 
 	return (
-		<div className="registerContainer">
+		<div className="formContainer">
 			<h1>Register</h1>
-			<form onSubmit={handleSubmit} className="registerForm">
-				<label htmlFor="username" className="registerFormField">
+			<form onSubmit={handleSubmit} className="form">
+				<label htmlFor="username" className="formField">
 					Username:
 					<input
-						className="registerFormInput"
+						className="formInput"
 						type="text"
 						name="username"
 						value={data.username}
@@ -53,10 +53,10 @@ const Register = () => {
 						required
 					/>
 				</label>
-				<label htmlFor="password" className="registerFormField">
+				<label htmlFor="password" className="formField">
 					Password:
 					<input
-						className="registerFormInput"
+						className="formInput"
 						type="password"
 						name="password"
 						value={data.password}
