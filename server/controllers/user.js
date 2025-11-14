@@ -36,7 +36,7 @@ module.exports = {
 			//console.log(userSubmit)
 			res.status(200).send({ message: 'Registration successful?' });
 		} else {
-			console.log('Fail...')
+			console.log('That username is unavailable')
 			res.status(418).send({ message: 'That username is taken.' });
 		}
 	},
@@ -49,5 +49,13 @@ module.exports = {
 		}
 		// Queries database for given username
 		const result = await db.query(checkUser)
+		const exists = result.rowCount > 0
+		
+		if(exists) {
+			const comparePassword = await bcrypt.compare(password, result.rows[0].password)
+			res.status(200).send({ message: 'Login successful' })
+		} else {
+			res.status(401).send({ message: 'Gotta sign up mannnnn' })
+		}
 	}
 }

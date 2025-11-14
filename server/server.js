@@ -10,6 +10,12 @@ console.log('MUST BE STARTED FROM /server')
 // app.user(morgan(NODE_ENV === 'production' ? 'combined' : 'dev'))
 // app.use(cors);
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Headers', '*')
+    next()
+})
+
 // Helps handle JSON and ensures URL encoding is handled properly
 app.use(express.json({ strict: true }));
 app.use(express.urlencoded({ extended: true }));

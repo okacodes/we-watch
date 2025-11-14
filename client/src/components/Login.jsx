@@ -4,8 +4,8 @@ import Button1 from './Button1.jsx'
 
 const Login = () => {
 	const [data, setData] = useState({
-		name: "",
-		email: ""
+		username: "",
+		password: ""
 	});
 
 	const handleChange = (e) => {
@@ -22,14 +22,17 @@ const Login = () => {
 			username: data.username,
 			password: data.password
 		}
-		
 		axios({
 			method: 'post',
 			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-			url: 'http://localhost:3000/api/signup',
+			url: 'http://localhost:3000/api/login',
 			data: userData
 		}).then((res) => {
-				console.log(res.status, res.data.token)
+				console.log('It worked?')
+				console.log(res, res.data)
+			})
+		.catch((err) => {
+				console.log('Somethin wronggg', err)
 			})
 
 		//axios.post("http://localhost:3000/api/signup", userData)
