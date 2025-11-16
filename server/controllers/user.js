@@ -1,5 +1,6 @@
 const db = require('../models/postgresdb')
 const bcrypt = require('bcrypt')
+require('dotenv').config({path: 'server/.env'})
 
 module.exports = {
 //	getSignup: async(req, res) => {
@@ -52,8 +53,21 @@ module.exports = {
 		const exists = result.rowCount > 0
 		
 		if(exists) {
-			const comparePassword = await bcrypt.compare(password, result.rows[0].password)
-			res.status(200).send({ message: 'Login successful' })
+			const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY
+
+			//comparePassword ? res.status(200).send({ message: 'Login successful' }) :
+			//	res.status(401).send({ message: 'Password incorrect.' })
+			if (!comparePassword) {
+				res.status(401.send({ message: 'Password incorrect.' }))
+			}
+
+			let data = {
+				signInTime: Date.now(),
+				username,
+			}
+
+			const token = jwt.sign(data, JWT_SECRET_KEY)
+			res.status(200).json({ message: 'Success.', token })
 		} else {
 			res.status(401).send({ message: 'Gotta sign up mannnnn' })
 		}

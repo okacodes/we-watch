@@ -28,7 +28,6 @@ const Login = () => {
 			url: 'http://localhost:3000/api/login',
 			data: userData
 		}).then((res) => {
-				console.log('It worked?')
 				console.log(res, res.data)
 			})
 		.catch((err) => {
