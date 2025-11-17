@@ -4,12 +4,6 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config({path: '../../server/.env'})
 
 module.exports = {
-//	getSignup: async(req, res) => {
-//		// TODO: add redirect if user logged in
-//		res.send('whoa')
-//		console.log('controller test 2')
-//	},
-
 	postSignup: async(req, res) => {
 		// Declares the username to check
 		const { username, password } = req.body
@@ -54,12 +48,10 @@ module.exports = {
 		const exists = result.rowCount > 0
 		
 		if(exists) {
-			//comparePassword ? res.status(200).send({ message: 'Login successful' }) :
-			//	res.status(401).send({ message: 'Password incorrect.' })
 			const comparePassword = await bcrypt.compare(password, result.rows[0].password)
 			
 			if (!comparePassword) {
-				res.status(418).send({ message: 'Password incorrect.' })
+				res.status(401).send({ message: 'Password incorrect.' })
 			} else {
 				console.log('comparePassword test')
 				const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY

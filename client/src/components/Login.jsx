@@ -31,21 +31,15 @@ const Login = () => {
 			url: 'http://localhost:3000/api/login',
 			data: userData
 		})
-//		.then((res) => res.json())
 		.then((res) => {
-				if(res.data.message === 'Success.') {
-					localStorage.setItem('jwt-token', res.data.token)
-					alert('Success?')
-					navigate('/jwt')
-				} else {
-					alert('Failed.')
-				}
-			})
-
-		//axios.post("http://localhost:3000/api/signup", userData)
-		//.then((res) => {
-		//		console.log(res.status, res.data.token)
-		//	})
+			localStorage.setItem('jwt-token', res.data.token)
+			alert('Success?')
+			navigate('/jwt')
+		})
+		.catch((err) => {
+			alert('Failure.')
+			console.log(err)
+		})
 	}
 
 	return (

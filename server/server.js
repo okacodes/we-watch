@@ -2,6 +2,7 @@ const express = require('express');
 //const morgan = require('morgan');
 // const cors = require('cors');
 const userRoutes = require('./routes/user.js')
+const authRoutes = require('./routes/auth.js')
 const app = express();
 
 console.log('MUST BE STARTED FROM /server')
@@ -27,6 +28,7 @@ app.get('/', (req, res) => {
 
 // Handles user authentication
 app.use('/api', userRoutes)
+app.use('/api', authRoutes)
 
 // Server Listening
 app.listen(process.env.PORT || 3000, () => {
