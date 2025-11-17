@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Button1 from './Button1.jsx'
+import Button1 from './Button1.jsx';
 
 const Login = () => {
+	const navigate = useNavigate();
+
 	const [data, setData] = useState({
 		username: "",
 		password: ""
@@ -27,11 +30,16 @@ const Login = () => {
 			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 			url: 'http://localhost:3000/api/login',
 			data: userData
-		}).then((res) => {
-				console.log(res, res.data)
-			})
-		.catch((err) => {
-				console.log('Somethin wronggg', err)
+		})
+//		.then((res) => res.json())
+		.then((res) => {
+				if(res.data.message === 'Success.') {
+					localStorage.setItem('jwt-token', res.data.token)
+					alert('Success?')
+					navigate('/jwt')
+				} else {
+					alert('Failed.')
+				}
 			})
 
 		//axios.post("http://localhost:3000/api/signup", userData)

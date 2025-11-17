@@ -1,6 +1,7 @@
 const db = require('../models/postgresdb')
 const bcrypt = require('bcrypt')
-require('dotenv').config({path: 'server/.env'})
+const jwt = require('jsonwebtoken')
+require('dotenv').config({path: '../../server/.env'})
 
 module.exports = {
 //	getSignup: async(req, res) => {
@@ -53,23 +54,25 @@ module.exports = {
 		const exists = result.rowCount > 0
 		
 		if(exists) {
-			const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY
-
 			//comparePassword ? res.status(200).send({ message: 'Login successful' }) :
 			//	res.status(401).send({ message: 'Password incorrect.' })
+			const comparePassword = await bcrypt.compare(password, result.rows[0].password)
+			
 			if (!comparePassword) {
-				res.status(401.send({ message: 'Password incorrect.' }))
-			}
-
-			let data = {
-				signInTime: Date.now(),
-				username,
-			}
+				res.status(418).send({ message: 'Password incorrect.' })
+			} else {
+				console.log('comparePassword test')
+				const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY
+				let data = {
+					signInTime: Date.now(),
+					username
+				}
 
 			const token = jwt.sign(data, JWT_SECRET_KEY)
-			res.status(200).json({ message: 'Success.', token })
+			res.status(200).send({ message: 'Success.', token })
+			}
 		} else {
-			res.status(401).send({ message: 'Gotta sign up mannnnn' })
+			res.status(418).send({ message: 'Gotta sign up mannnnn' })
 		}
 	}
 }

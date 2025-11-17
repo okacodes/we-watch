@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import Home from './components/Home.jsx'
 import Register from './components/Register.jsx'
 import Login from './components/Login.jsx'
+import JWT from './components/JWT.jsx'
 
 import './App.css'
 import './Reset.css'
@@ -18,6 +19,7 @@ const App = () => {
 						<li><Link to="/">Home</Link></li>
 						<li><Link to="/register">Register</Link></li>
 						<li><Link to="/login">Login</Link></li>
+						<li><Link to="/jwt">JWT</Link></li>
 					</ul>
 				</header>
 			</div>	
@@ -26,6 +28,7 @@ const App = () => {
 				<Route path='/' element={<Home />} />
 				<Route path='/register' element={<Register />} />
 				<Route path='/login' element={<Login />} />
+				<Route path='/jwt' element={<JWT />} />
 			</Routes>
 		</Router>
 	);
