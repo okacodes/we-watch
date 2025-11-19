@@ -29,11 +29,12 @@ const Login = () => {
 			method: 'post',
 			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 			url: 'http://localhost:3000/api/login',
+			withCredentials: 'include',
 			data: userData
 		})
 		.then((res) => {
-			localStorage.setItem('jwt-token', res.data.token)
-			alert('Success?')
+			//localStorage.setItem('jwt-token', res.data.token)
+			alert(document.cookie)
 			navigate('/dashboard')
 		})
 		.catch((err) => {

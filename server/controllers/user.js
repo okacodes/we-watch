@@ -51,7 +51,7 @@ module.exports = {
 			const comparePassword = await bcrypt.compare(password, result.rows[0].password)
 			
 			if (!comparePassword) {
-				res.status(401).send({ message: 'Password incorrect.' })
+				res.status(400).send({ message: 'Login failed.' })
 			} else {
 				console.log('comparePassword test')
 				const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY
@@ -61,10 +61,15 @@ module.exports = {
 				}
 
 			const token = jwt.sign(data, JWT_SECRET_KEY)
+			res.cookie('jwt-token', token, {
+					httpOnly: true,
+					secure: true,
+					maxAge: 60 * 60 * 1000
+				})
 			res.status(200).send({ message: 'Success.', token })
 			}
 		} else {
-			res.status(418).send({ message: 'Gotta sign up mannnnn' })
+			res.status(400).send({ message: 'Login failed.' })
 		}
 	}
 }

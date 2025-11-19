@@ -10,8 +10,12 @@ const Dashboard = () => {
 	const [userData, setUserData] = useState({})
 
 	useEffect(() => {
+<<<<<<< Updated upstream
 		//const token = localStorage.getItem('jwt-token')
 		const token = Cookies.get('jwt-token')
+=======
+		const token = document.cookie.replace(/(?:(?:^|.*;\s*)jwt-token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+>>>>>>> Stashed changes
 		setToken(token)
 		console.log(token)
 		// The following post request is meant to check if the user is authorized. It will be used in a later implementation.
