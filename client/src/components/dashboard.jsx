@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Button1 from './Button1.jsx';
 
-const JWT = () => {
+const Dashboard = () => {
+	const navigate = useNavigate();
 	const [token, setToken] = useState('')
 	const [userData, setUserData] = useState({})
 
@@ -27,6 +28,7 @@ const JWT = () => {
 	//	}, [])
 
 	const logout = () => {
+		navigate('/')
 		setToken('')
 		localStorage.removeItem('jwt-token')
 	}
@@ -46,4 +48,4 @@ const JWT = () => {
 	)
 }
 
-export default JWT;
+export default Dashboard;

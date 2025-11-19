@@ -34,7 +34,7 @@ const Login = () => {
 		.then((res) => {
 			localStorage.setItem('jwt-token', res.data.token)
 			alert('Success?')
-			navigate('/jwt')
+			navigate('/dashboard')
 		})
 		.catch((err) => {
 			alert('Failure.')
