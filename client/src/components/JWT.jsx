@@ -4,16 +4,14 @@ import Cookies from "js-cookie";
 import axios from 'axios';
 import Button1 from './Button1.jsx';
 
-const Dashboard = () => {
-	const navigate = useNavigate();
+const JWT = () => {
 	const [token, setToken] = useState('')
 	const [userData, setUserData] = useState({})
 
 	useEffect(() => {
-		//const token = localStorage.getItem('jwt-token')
 		const token = Cookies.get('jwt-token')
 		setToken(token)
-		console.log(token)
+
 		// The following post request is meant to check if the user is authorized. It will be used in a later implementation.
 
 		//axios({
@@ -30,7 +28,6 @@ const Dashboard = () => {
 	//	}, [])
 
 	const logout = () => {
-		navigate('/')
 		setToken('')
 		localStorage.removeItem('jwt-token')
 	}
@@ -50,4 +47,4 @@ const Dashboard = () => {
 	)
 }
 
-export default Dashboard;
+export default JWT;
