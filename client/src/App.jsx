@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import Home from './components/Home.jsx'
 import Register from './components/Register.jsx'
 import Login from './components/Login.jsx'
-import Dashboard from './components/dashboard.jsx'
+import Dashboard from './components/Dashboard.jsx'
 
 import './App.css'
 import './Reset.css'
