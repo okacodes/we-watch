@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Cookies from "js-cookie";
 import Button1 from './Button1.jsx';
 
 const Login = () => {
@@ -29,12 +30,13 @@ const Login = () => {
 			method: 'post',
 			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 			url: 'http://localhost:3000/api/login',
-			withCredentials: 'include',
+			withCredentials: 'true',
 			data: userData
 		})
-		.then((res) => {
+		.then(() => {
 			//localStorage.setItem('jwt-token', res.data.token)
-			alert(document.cookie)
+			//Cookies.set('jwt-token', res.data.token, { expires: 1 })
+			//console.log(res.data.token)
 			navigate('/dashboard')
 		})
 		.catch((err) => {

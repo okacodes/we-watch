@@ -6,24 +6,27 @@ import Button1 from './Button1.jsx';
 
 const Dashboard = () => {
 	const navigate = useNavigate();
-	const [token, setToken] = useState('')
 	const [userData, setUserData] = useState({})
+	const [authorized, setAuthorized] = useState(null)
 
 	useEffect(() => {
-		//const token = localStorage.getItem('jwt-token')
-		const token = Cookies.get('jwt-token')
-		setToken(token)
-		console.log(token)
 		// The following post request is meant to check if the user is authorized. It will be used in a later implementation.
-
-		//axios({
-		//	method: 'post',
-		//	headers: {
-		//		'Content-Type': 'application/x-www-form-urlencoded',
-		//		'jwt-token': token,
-		//	},
-		//	url: 'http://localhost:3000/api/checkauth'
-		//})
+		axios({
+			method: 'post',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			url: 'http://localhost:3000/api/checkauth',
+			withCredentials: true
+		})
+		.then(() => {
+				setAuthorized(true)
+				//Will add
+				//setuserData(res.data.user)
+			})
+		.catch(() => {
+				setAuthorized(false)
+			})
 	}, [])
 	//.then((res) => {
 	//		setUserdata(res.data)
@@ -34,7 +37,7 @@ const Dashboard = () => {
 		setToken('')
 		localStorage.removeItem('jwt-token')
 	}
-	if (!token) {
+	if (!authorized) {
 		return (
 			<div>
 				<h1>NOT AUTHORIZED</h1>

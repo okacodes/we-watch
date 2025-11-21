@@ -3,6 +3,7 @@ const express = require('express');
 // const cors = require('cors');
 const userRoutes = require('./routes/user.js')
 const authRoutes = require('./routes/auth.js')
+const cookieParser = require("cookie-parser");
 const app = express();
 
 console.log('MUST BE STARTED FROM /server')
@@ -21,6 +22,9 @@ app.use((req, res, next) => {
 // Helps handle JSON and ensures URL encoding is handled properly
 app.use(express.json({ strict: true }));
 app.use(express.urlencoded({ extended: true }));
+
+// Handle cookies
+app.use(cookieParser());
 
 // Get request 
 app.get('/', (req, res) => {

@@ -63,10 +63,11 @@ module.exports = {
 			const token = jwt.sign(data, JWT_SECRET_KEY)
 			res.cookie('jwt-token', token, {
 					httpOnly: true,
-					secure: true,
-					maxAge: 60 * 60 * 1000
+					secure: false,
+					maxAge: 60 * 60 * 1000,
+					sameSite: 'Lax'
 				})
-			res.status(200).send({ message: 'Success.', token })
+			res.status(200).send({ message: 'Success.', token: token })
 			}
 		} else {
 			res.status(400).send({ message: 'Login failed.' })
