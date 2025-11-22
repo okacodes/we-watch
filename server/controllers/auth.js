@@ -7,13 +7,22 @@ module.exports = {
 		const token = req.cookies['jwt-token']
 		try {
 			const verified = jwt.verify(token, JWT_SECRET_KEY)
-			if (verified) {
-				console.log('Passed verified check.')
-				return res.status(200).send({ message: 'Success.' })
-			}
+			console.log('Passed verified check.')
+			return res.status(200).send({ message: 'Success.' })
 		} catch (err) {
 			console.log('Failed verified check.')
 			return res.status(400).send({ message: 'Not authorized.' })
+		}
+	},
+
+	clearToken: async(req, res) => {
+		try {
+			res.cookie('jwt-token', '')
+			//req.clearCookie('jwt-token')
+			return res.status(200).send({ message: 'Logged out.' })
+		} catch ( err ) {
+			console.log('Logging out failed?')
+			return res.status(400).send({ message: 'Logging out failed?' })
 		}
 	}
 }

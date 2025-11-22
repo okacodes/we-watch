@@ -33,8 +33,22 @@ const Dashboard = () => {
 	//	}, [])
 
 	const logout = () => {
-		navigate('/')
+		axios({
+			method: 'get',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			url: 'http://localhost:3000/api/clearauth',
+			withCredentials: true
+		})
+		.then(() => {
+				navigate('/')
+			})
+		.catch((err) => {
+				console.log(err)
+			})
 	}
+
 	if (!authorized) {
 		return (
 			<div>
