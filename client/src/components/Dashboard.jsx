@@ -12,7 +12,7 @@ const Dashboard = () => {
 	useEffect(() => {
 		// The following post request is meant to check if the user is authorized. It will be used in a later implementation.
 		axios({
-			method: 'post',
+			method: 'get',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded',
 			},
@@ -34,8 +34,6 @@ const Dashboard = () => {
 
 	const logout = () => {
 		navigate('/')
-		setToken('')
-		localStorage.removeItem('jwt-token')
 	}
 	if (!authorized) {
 		return (
