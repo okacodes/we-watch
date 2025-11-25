@@ -6,7 +6,7 @@ import Button1 from './Button1.jsx';
 
 const Dashboard = () => {
 	const navigate = useNavigate();
-	const [userData, setUserData] = useState({})
+	//const [userData, setUserData] = useState({})
 	const [authorized, setAuthorized] = useState(null)
 
 	useEffect(() => {
@@ -31,6 +31,10 @@ const Dashboard = () => {
 	//.then((res) => {
 	//		setUserdata(res.data)
 	//	}, [])
+
+	//const makeRoom = () => {
+	//	
+	//}
 
 	const logout = () => {
 		axios({

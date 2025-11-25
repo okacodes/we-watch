@@ -28,8 +28,8 @@ module.exports = {
 			
 			await db.query(registerQuery)
 			console.log('Success!')
-			//const userSubmit = await db.query(`INSERT INTO users(username, password) VALUES('${username}', '${password}') RETURNING *`)
-			//console.log(userSubmit)
+			//const usersubmit = await db.query(`INSERT INTO users(username, password) VALUES('${username}', '${password}') RETURNING *`)
+			//console.log(usersubmit)
 			res.status(200).send({ message: 'Registration successful?' });
 		} else {
 			console.log('That username is unavailable')
@@ -64,7 +64,7 @@ module.exports = {
 			res.cookie('jwt-token', token, {
 					httpOnly: true,
 					secure: false,
-					maxAge: 60 * 60 * 1000,
+					maxAge: 24 * 60 * 60 * 1000,
 					sameSite: 'Lax'
 				})
 			res.status(200).send({ message: 'Success.', token: token })
