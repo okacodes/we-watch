@@ -58,8 +58,13 @@ const Dashboard = () => {
 	}
 
 	return (
-		<div>
-			<h1>Welcome to the Dashboard!</h1>
+		<div className="dashboard-hero">
+			<div className="dashboard-main">
+				<h1>Welcome to the Dashboard!</h1>
+				<p>You are not hosting a room.</p>
+				<h2 className="create-room">Create a room:</h2>
+				<button>Create</button>
+			</div>
 			<button onClick={logout}>Logout</button>
 		</div>
 	)
